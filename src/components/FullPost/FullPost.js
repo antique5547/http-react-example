@@ -16,10 +16,13 @@ class FullPost extends Component {
         (this.state.post && this.state.post.id !== this.props.id)
       ) {
         axios
-          .get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
+          .get("/posts/" + this.props.id)
           .then(response => {
             console.log(response);
             this.setState({ post: response.data });
+          })
+          .catch(error => {
+            console.log(error);
           });
       }
     }
